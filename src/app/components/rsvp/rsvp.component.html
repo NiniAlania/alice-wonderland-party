@@ -1,0 +1,162 @@
+<div class="rsvp-container">
+  
+  <!-- Section Header -->
+  <div class="section-header">
+    <h2 class="rsvp-title">Will You Join Us?</h2>
+    <p class="rsvp-subtitle">Let Alice know if you can make it to Wonderland!</p>
+  </div>
+  
+  @if (!submitted()) {
+    <!-- RSVP Form -->
+    <div class="rsvp-form-card">
+      
+      <!-- Error Message -->
+      @if (error()) {
+        <div class="error-message">
+          <span class="error-icon">⚠️</span>
+          <span>{{ error() }}</span>
+        </div>
+      }
+      
+      <form (ngSubmit)="onSubmit()" class="rsvp-form">
+        
+        <!-- Name Field -->
+        <div class="form-group">
+          <label for="name" class="form-label">
+            <span class="label-icon">👤</span>
+            Your Name
+          </label>
+          <input 
+            type="text" 
+            id="name"
+            class="form-input"
+            placeholder="Enter your name"
+            [value]="formData().name"
+            (input)="updateField('name', $any($event.target).value)"
+            required
+          />
+        </div>
+        
+        <!-- Attendance -->
+        <div class="form-group">
+          <div class="form-label">
+            <span class="label-icon">
+            </span>
+            Will you attend?
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="Will you attend?">
+            <label class="radio-option" [class.selected]="formData().attendance === 'yes'">
+              <input 
+                type="radio" 
+                name="attendance" 
+                value="yes"
+                (change)="updateField('attendance', 'yes')"
+                required
+              />
+              <span class="radio-custom"></span>
+              <span class="radio-text">Yes! I'll be there! 🎊</span>
+            </label>
+            
+            <label class="radio-option" [class.selected]="formData().attendance === 'no'">
+              <input 
+                type="radio" 
+                name="attendance" 
+                value="no"
+                (change)="updateField('attendance', 'no')"
+                required
+              />
+              <span class="radio-custom"></span>
+              <span class="radio-text">Sorry, I'm a party pooper 😢</span>
+            </label>
+          </div>
+        </div>
+        
+        @if (formData().attendance === 'yes') {
+          <!-- Character/Costume -->
+          <div class="form-group slide-in">
+            <label for="character" class="form-label">
+              <span class="label-icon"></span>
+              Who will you dress as?(Optional)
+            </label>
+            <input 
+              type="text" 
+              id="character"
+              class="form-input"
+              placeholder="e.g. Shrek, Pinocchio, ნაცარქექია, etc."
+              [value]="formData().character"
+              (input)="updateField('character', $any($event.target).value)"
+            />
+          </div>
+        }
+        
+        <!-- Message -->
+        <div class="form-group">
+          <label for="message" class="form-label">
+            <span class="label-icon">💌</span>
+            Message for me(optional)
+          </label>
+          <textarea 
+            id="message"
+            class="form-textarea"
+            rows="4"
+            placeholder="anything..."
+            [value]="formData().message"
+            (input)="updateField('message', $any($event.target).value)"
+          ></textarea>
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <button 
+            type="submit" 
+            class="submit-button"
+            [disabled]="submitting()"
+            [class.loading]="submitting()"
+          >
+            @if (submitting()) {
+              <span class="button-icon spinner">⏳</span>
+              <span class="button-text">Sending...</span>
+            } @else {
+              <span class="button-icon">🎈</span>
+              <span class="button-text">Send RSVP</span>
+              <span class="button-arrow">→</span>
+            }
+          </button>
+        </div>
+        
+      </form>
+      
+      <!-- Form Decorations -->
+      <div class="form-decorations">
+        <div class="deco deco-1">🌟</div>
+        <div class="deco deco-2">🎩</div>
+        <div class="deco deco-3">🫖</div>
+        <div class="deco deco-4">💜</div>
+      </div>
+    </div>
+  } @else {
+    <!-- Success Message -->
+    <div class="success-card">
+      <div class="success-icon">🎉</div>
+      <h2 class="success-title">Thank You!</h2>
+      <p class="success-message">
+        Your RSVP has been received! Alice is delighted 
+        @if (formData().attendance === 'yes') {
+          that you'll be joining us in Wonderland! 🎊
+        } @else {
+          to hear from you and hopes to see you next time! 💜
+        }
+      </p>
+      <button class="reset-button" (click)="resetForm()">
+        Submit Another Response
+      </button>
+    </div>
+  }
+  
+  <!-- Bottom Quote -->
+  <div class="rsvp-quote">
+    <p class="quote-text">"It's no use going back to yesterday, because I was a different person then."</p>
+    <p class="quote-author">— Alice</p>
+  </div>
+  
+</div>

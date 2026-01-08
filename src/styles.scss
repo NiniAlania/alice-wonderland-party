@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+/* Alice in Wonderland - Global Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  font-family: 'Courgette', 'Dancing Script', cursive;
+  background: linear-gradient(180deg, #1a0033 0%, #2d1b4e 50%, #4a2c6b 100%);
+  color: #ffffff;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Ensure images and media are responsive */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobile viewport optimization */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}

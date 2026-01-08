@@ -1,8 +1,61 @@
 # AliceInWonderland
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+🎉 **A Magical Alice in Wonderland Birthday Invitation Website**
+
+This is a whimsical, fully responsive Angular website for a birthday party invitation with an Alice in Wonderland theme. Features include animated entrance, countdown timer, location map, dress code guide, and a functional RSVP form!
+
+## ✨ Features
+
+- 🐰 **Down the Rabbit Hole** - Animated entrance with falling Alice and themed emojis
+- ⏰ **Countdown Timer** - Pocket watch-styled timer to the party date
+- 📍 **Location Section** - Interactive map link with animated rabbit
+- 👗 **Dress Code Guide** - Character costume suggestions with whimsical styling
+- 📧 **RSVP Form** - Fully functional form that sends responses via email
+- 📱 **Mobile Responsive** - Beautiful on all devices
+- 🎨 **Magical Theming** - Storybook fonts, gradients, and animations throughout
+
+## 🚀 Quick Start
+
+### Development server
+
+To start a local development server, run:
+
+```bash
+ng serve
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`.
+
+## 📧 Setting Up the RSVP Form
+
+The RSVP form is ready to send real emails! See **[RSVP_SETUP_GUIDE.md](./RSVP_SETUP_GUIDE.md)** for detailed setup instructions.
+
+**Quick Setup (5 minutes):**
+1. Create free account at [EmailJS.com](https://www.emailjs.com/)
+2. Connect your email service
+3. Create email template
+4. Copy Service ID, Template ID, and Public Key
+5. Paste them into `/src/app/services/email.service.ts`
+
+That's it! You'll receive RSVPs directly to your email inbox.
+
+## 🎨 Project Structure
+
+```
+src/app/
+├── components/
+│   ├── rabbit-hole/      # Animated entrance
+│   ├── countdown-timer/  # Party countdown
+│   ├── location/         # Location with map
+│   ├── dress-code/       # Costume suggestions
+│   └── rsvp/            # RSVP form
+└── services/
+    └── email.service.ts  # Email handling
+```
 
 ## Development server
+
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
 
 To start a local development server, run:
 

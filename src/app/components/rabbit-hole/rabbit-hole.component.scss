@@ -1,0 +1,515 @@
+.rabbit-hole-container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #1a0033 0%, #2d1b4e 50%, #4a2c6b 100%);
+}
+
+/* === RABBIT HOLE ENTRANCE === */
+.rabbit-hole-entrance {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+  
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Spiral Tunnel Effect */
+.spiral-tunnel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(138, 43, 226, 0.3) 0%, 
+    rgba(75, 0, 130, 0.5) 30%, 
+    rgba(25, 0, 51, 0.8) 60%,
+    #0a0015 100%
+  );
+  box-shadow: 
+    0 0 100px rgba(138, 43, 226, 0.6),
+    inset 0 0 100px rgba(75, 0, 130, 0.8);
+  animation: spiralSpin 8s linear infinite;
+}
+
+.entering .spiral-tunnel {
+  animation: spiralSpin 8s linear infinite, expandTunnel 3s ease-out forwards;
+}
+
+@keyframes spiralSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes expandTunnel {
+  0% { 
+    width: 300px; 
+    height: 300px;
+  }
+  100% { 
+    width: 2000px; 
+    height: 2000px;
+  }
+}
+
+/* Falling Alice */
+.falling-alice {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.entering .falling-alice {
+  animation: fallDown 3s ease-in forwards;
+}
+
+.alice-character {
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.6));
+  animation: rotate360 3s linear infinite, glow 2s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 40px rgba(255, 105, 180, 0.8));
+  }
+}
+
+@keyframes fallDown {
+  0% { 
+    top: -100px;
+    transform: translateX(-50%) scale(0.5);
+  }
+  100% { 
+    top: 120%;
+    transform: translateX(-50%) scale(1.5);
+  }
+}
+
+@keyframes rotate360 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Different positions for multiple falling characters */
+.alice-2 {
+  left: 25%;
+}
+
+.alice-3 {
+  left: 75%;
+}
+
+.alice-4 {
+  left: 35%;
+}
+
+.alice-5 {
+  left: 65%;
+}
+
+.entering .alice-2 {
+  animation: fallDown2 3.5s ease-in forwards;
+  animation-delay: 0.2s;
+}
+
+.entering .alice-3 {
+  animation: fallDown3 4s ease-in forwards;
+  animation-delay: 0.4s;
+}
+
+.entering .alice-4 {
+  animation: fallDown4 3.8s ease-in forwards;
+  animation-delay: 0.6s;
+}
+
+.entering .alice-5 {
+  animation: fallDown5 3.3s ease-in forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes fallDown2 {
+  0% { 
+    top: -100px;
+    transform: translateX(-50%) scale(0.4) rotate(0deg);
+  }
+  100% { 
+    top: 120%;
+    transform: translateX(-50%) scale(1.3) rotate(180deg);
+  }
+}
+
+@keyframes fallDown3 {
+  0% { 
+    top: -150px;
+    transform: translateX(-50%) scale(0.6) rotate(0deg);
+  }
+  100% { 
+    top: 120%;
+    transform: translateX(-50%) scale(1.4) rotate(-360deg);
+  }
+}
+
+@keyframes fallDown4 {
+  0% { 
+    top: -120px;
+    transform: translateX(-50%) scale(0.5) rotate(0deg);
+  }
+  100% { 
+    top: 120%;
+    transform: translateX(-50%) scale(1.2) rotate(270deg);
+  }
+}
+
+@keyframes fallDown5 {
+  0% { 
+    top: -80px;
+    transform: translateX(-50%) scale(0.45) rotate(0deg);
+  }
+  100% { 
+    top: 120%;
+    transform: translateX(-50%) scale(1.6) rotate(-180deg);
+  }
+}
+
+/* Floating Objects */
+.floating-objects {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floating-item {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.entering .floating-item {
+  animation: floatAndFade 4s ease-in-out forwards;
+}
+
+.clock { top: 10%; left: 15%; animation-delay: 0.2s; }
+.teacup { top: 20%; right: 20%; animation-delay: 0.5s; }
+.card { top: 40%; left: 10%; animation-delay: 0.8s; }
+.key { top: 60%; right: 15%; animation-delay: 1.1s; }
+.rose { top: 70%; left: 25%; animation-delay: 1.4s; }
+.mushroom { top: 50%; right: 25%; animation-delay: 1.7s; }
+.rabbit { top: 15%; right: 10%; animation-delay: 0.3s; font-size: 3rem; }
+.hat { top: 35%; right: 30%; animation-delay: 0.9s; }
+.cake { top: 55%; left: 20%; animation-delay: 1.5s; }
+.heart { top: 25%; left: 30%; animation-delay: 0.6s; color: #ff1744; }
+.spade { top: 45%; right: 18%; animation-delay: 1.2s; color: #000; }
+.crown { top: 65%; right: 28%; animation-delay: 1.8s; }
+.potion { top: 30%; left: 12%; animation-delay: 0.7s; }
+.cookie { top: 75%; right: 35%; animation-delay: 2s; }
+.cat { top: 18%; left: 35%; animation-delay: 0.4s; font-size: 3rem; }
+.playing-card { top: 48%; left: 28%; animation-delay: 1.3s; }
+.diamond { top: 62%; left: 15%; animation-delay: 1.6s; color: #ff1744; }
+.club { top: 72%; right: 20%; animation-delay: 1.9s; color: #000; }
+
+@keyframes floatAndFade {
+  0% { 
+    opacity: 0;
+    transform: translateY(-50px) rotate(0deg);
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% { 
+    opacity: 0;
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* Entrance Text */
+.entrance-text {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInUp 2s ease-out forwards;
+}
+
+.entering .entrance-text {
+  animation: fadeInUp 1s ease-out forwards, fadeOutDown 1s ease-in 2.5s forwards;
+}
+
+.wonderland-title {
+  font-size: 3.5rem;
+  font-family: 'Fredericka the Great', 'Pacifico', cursive;
+  font-weight: 400;
+  background: linear-gradient(135deg, #ff6ec7, #b19cd9, #66d9ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(255, 110, 199, 0.5);
+  margin-bottom: 1rem;
+  letter-spacing: 3px;
+  transform: rotate(-2deg);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-family: 'Satisfy', 'Dancing Script', cursive;
+  font-style: italic;
+  color: #d4a5ff;
+  text-shadow: 0 0 10px rgba(212, 165, 255, 0.8);
+  transform: rotate(1deg);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  to {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
+/* Skip Button */
+.skip-button {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateX(5px);
+  }
+}
+
+/* === MAIN CONTENT === */
+.main-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition: all 1s ease-out;
+  overflow-y: auto;
+  
+  &.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+  }
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+  padding-bottom: 6rem;
+}
+
+.welcome-title {
+  font-size: 4.5rem;
+  font-family: 'Fredericka the Great', 'Pacifico', cursive;
+  font-weight: 400;
+  background: linear-gradient(135deg, #ffd700, #ff69b4, #da70d6, #87ceeb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  animation: shimmer 3s ease-in-out infinite;
+  letter-spacing: 2px;
+  transform: rotate(-1deg);
+}
+
+@keyframes shimmer {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)); }
+  50% { filter: brightness(1.3) drop-shadow(0 0 30px rgba(255, 105, 180, 0.8)); }
+}
+
+.tagline {
+  font-size: 1.8rem;
+  font-family: 'Satisfy', 'Courgette', cursive;
+  color: #d4a5ff;
+  font-style: italic;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px rgba(212, 165, 255, 0.6);
+  letter-spacing: 1px;
+  transform: rotate(1deg);
+}
+
+.invitation-preview {
+  margin: 3rem auto;
+  max-width: 600px;
+}
+
+.card-border {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 3px solid;
+  border-image: linear-gradient(135deg, #ffd700, #ff69b4, #da70d6) 1;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(138, 43, 226, 0.3);
+  
+  h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    font-family: 'Georgia', serif;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: #d4a5ff;
+    font-style: italic;
+  }
+}
+
+.explore-text {
+  margin-top: 3rem;
+  font-size: 1.2rem;
+  color: #b19cd9;
+  
+  p {
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wonderland-title {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+  
+  .welcome-title {
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle, .tagline {
+    font-size: 1.2rem;
+  }
+  
+  .floating-item {
+    font-size: 1.5rem;
+  }
+  
+  .skip-button {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .content-wrapper {
+    padding: 3rem 1.5rem 5rem;
+  }
+  
+  .invitation-preview {
+    margin: 2rem auto;
+  }
+  
+  .card-border {
+    padding: 2rem 1.5rem;
+    
+    h2 {
+      font-size: 1.6rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .rabbit-hole-container {
+    overflow-x: hidden;
+  }
+  
+  .wonderland-title {
+    font-size: 2rem;
+  }
+  
+  .welcome-title {
+    font-size: 2.2rem;
+  }
+  
+  .subtitle, .tagline {
+    font-size: 1rem;
+  }
+  
+  .floating-item {
+    font-size: 1.2rem;
+  }
+  
+  .alice-character {
+    width: 150px;
+  }
+  
+  .content-wrapper {
+    padding: 2rem 1rem 4rem;
+  }
+  
+  .card-border {
+    padding: 1.5rem 1rem;
+    
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+  
+  .skip-button {
+    bottom: 15px;
+    right: 15px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}

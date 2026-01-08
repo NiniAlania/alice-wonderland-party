@@ -1,0 +1,79 @@
+<div class="rabbit-hole-container" [class.entering]="isEntering()">
+  
+  <!-- The Rabbit Hole Entrance -->
+  <div class="rabbit-hole-entrance" [class.hide]="showMainContent()">
+    <div class="spiral-tunnel"></div>
+    
+    <!-- Falling Alice Character -->
+    <div class="falling-alice">
+      <img src="cat.png" alt="Alice falling" class="alice-character" />
+    </div>
+    
+    <!-- Multiple Falling Characters -->
+    <div class="falling-alice alice-2">
+      <img src="hat.png" alt="Mad Hatter's hat" class="alice-character" />
+    </div>
+    
+    <div class="falling-alice alice-3">
+      <img src="cat.png" alt="Cheshire Cat" class="alice-character" />
+    </div>
+    
+    <div class="falling-alice alice-4">
+      <img src="hat.png" alt="Top Hat" class="alice-character" />
+    </div>
+    
+    <div class="falling-alice alice-5">
+      <img src="cat.png" alt="Cat" class="alice-character" />
+    </div>
+    
+    <!-- Floating Objects -->
+    <div class="floating-objects">
+      <div class="floating-item clock">🕐</div>
+      <div class="floating-item teacup">🫖</div>
+      <div class="floating-item card">🂡</div>
+      <div class="floating-item key">🗝️</div>
+      <div class="floating-item rose">🌹</div>
+      <div class="floating-item mushroom">🍄</div>
+      <div class="floating-item hat">🎩</div>
+      <div class="floating-item cake">🎂</div>
+      <div class="floating-item heart">❤️</div>
+      <div class="floating-item spade">♠️</div>
+      <div class="floating-item playing-card">🃏</div>
+      <div class="floating-item diamond">♦️</div>
+      <div class="floating-item club">♣️</div>
+    </div>
+    
+    <!-- Welcome Text -->
+    <div class="entrance-text">
+      <h1 class="wonderland-title">Down the Rabbit Hole...</h1>
+      <p class="subtitle">Follow Alice to Wonderland</p>
+    </div>
+    
+    <!-- Skip Button -->
+    <button class="skip-button" (click)="skipAnimation()">
+      Skip Animation →
+    </button>
+  </div>
+  
+  <!-- Main Content (Shown after animation) -->
+  <div class="main-content" [class.visible]="showMainContent()">
+    <div class="content-wrapper">
+      <h1 class="welcome-title">Welcome to Wonderland!</h1>
+      <p class="tagline">You're invited to Nini's Very Merry Unbirthday Party!</p>
+      
+      <!-- Countdown Timer -->
+      <app-countdown-timer />
+      
+      <!-- Location Section -->
+      <app-location />
+      
+      <!-- Dress Code Section -->
+      <app-dress-code />
+      
+      <!-- RSVP Form -->
+      <app-rsvp />
+      
+    </div>
+  </div>
+  
+</div>

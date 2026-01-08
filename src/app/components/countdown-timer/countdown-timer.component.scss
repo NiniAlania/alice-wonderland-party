@@ -1,0 +1,425 @@
+.countdown-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* === POCKET WATCH DESIGN === */
+.pocket-watch {
+  position: relative;
+  display: inline-block;
+  padding-top: 50px;
+}
+
+/* Watch Chain */
+.watch-chain {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 50px;
+  background: linear-gradient(180deg, 
+    rgba(255, 215, 0, 0.8) 0%,
+    rgba(218, 165, 32, 0.9) 100%
+  );
+  border-radius: 2px;
+  
+  &::before {
+    content: '⚬';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffd700;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  }
+}
+
+/* Watch Body */
+.watch-body {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(245, 245, 220, 0.95) 100%
+  );
+  border-radius: 50%;
+  border: 12px solid #daa520;
+  box-shadow: 
+    0 0 30px rgba(218, 165, 32, 0.6),
+    inset 0 0 30px rgba(0, 0, 0, 0.1),
+    0 10px 50px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: gentleFloat 3s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+/* Watch Crown (winding mechanism) */
+.watch-crown {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 20px;
+  background: linear-gradient(180deg, #ffd700, #daa520);
+  border-radius: 5px 5px 0 0;
+  border: 2px solid #b8860b;
+  box-shadow: 0 2px 10px rgba(218, 165, 32, 0.5);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 10px;
+    background: #daa520;
+    border-radius: 3px;
+    border: 2px solid #b8860b;
+  }
+}
+
+/* Watch Face */
+.watch-face {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  background: radial-gradient(circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(252, 252, 240, 1) 100%
+  );
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 2;
+}
+
+/* Watch Decorations (Card Suits) */
+.watch-decorations {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 25px;
+  
+  .decoration {
+    position: absolute;
+    font-size: 1.5rem;
+    color: #8b0000;
+    text-shadow: 0 0 5px rgba(139, 0, 0, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+    
+    &.top { top: 30px; left: 35%; transform: translateX(-50%); }
+    &.right { right: 15px; top: 50%; transform: translateY(-50%); }
+    &.bottom { bottom: 15px; left: 50%; transform: translateX(-50%); }
+    &.left { left: 15px; top: 50%; transform: translateY(-50%); }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Countdown Title */
+.countdown-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #4a2c6b;
+  margin-bottom: 1rem;
+  font-family: 'Fredericka the Great', 'Pacifico', cursive;
+  letter-spacing: 2px;
+  text-transform: none;
+}
+
+/* Time Grid */
+.time-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.time-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d1b4e;
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(135deg, #6a0dad, #9370db);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(106, 13, 173, 0.2);
+  line-height: 1;
+}
+
+.time-label {
+  font-size: 0.7rem;
+  color: #666;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+  letter-spacing: 0.5px;
+}
+
+.time-separator {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #9370db;
+  margin: 0 0.2rem;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Party Date */
+.party-date {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background: rgba(218, 165, 32, 0.1);
+  border-radius: 10px;
+  border: 2px dashed #daa520;
+}
+
+.date-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.date-text {
+  font-size: 1rem;
+  color: #4a2c6b;
+  font-weight: 600;
+  line-height: 1.4;
+  font-family: 'Kalam', 'Courgette', cursive;
+  letter-spacing: 0.5px;
+}
+
+/* Expired Message */
+.expired-message {
+  padding: 2rem;
+  
+  .expired-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: celebrate 0.5s ease-in-out infinite alternate;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #4a2c6b;
+    margin-bottom: 0.5rem;
+    font-family: 'Fredericka the Great', cursive;
+  }
+  
+  p {
+    font-size: 1.3rem;
+    color: #9370db;
+    font-style: italic;
+    font-family: 'Satisfy', cursive;
+  }
+}
+
+@keyframes celebrate {
+  0% { transform: scale(1) rotate(-5deg); }
+  100% { transform: scale(1.1) rotate(5deg); }
+}
+
+/* Clock Hands (Decorative) */
+.clock-hands {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.hour-hand {
+  position: absolute;
+  width: 6px;
+  height: 80px;
+  background: linear-gradient(180deg, #2d1b4e, #4a2c6b);
+  border-radius: 3px;
+  bottom: 0;
+  left: -3px;
+  transform-origin: center bottom;
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px rgba(45, 27, 78, 0.5);
+  animation: hourRotate 120s linear infinite;
+}
+
+.minute-hand {
+  position: absolute;
+  width: 4px;
+  height: 110px;
+  background: linear-gradient(180deg, #6a0dad, #9370db);
+  border-radius: 2px;
+  bottom: 0;
+  left: -2px;
+  transform-origin: center bottom;
+  transform: rotate(120deg);
+  box-shadow: 0 0 10px rgba(106, 13, 173, 0.5);
+  animation: minuteRotate 10s linear infinite;
+}
+
+.center-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, #ffd700, #daa520);
+  border-radius: 50%;
+  bottom: -8px;
+  left: -8px;
+  border: 2px solid #2d1b4e;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+@keyframes hourRotate {
+  from { transform: rotate(45deg); }
+  to { transform: rotate(405deg); }
+}
+
+@keyframes minuteRotate {
+  from { transform: rotate(120deg); }
+  to { transform: rotate(480deg); }
+}
+
+/* Countdown Message */
+.countdown-message {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.quote {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  font-family: 'Dancing Script', cursive;
+  letter-spacing: 0.5px;
+}
+
+.author {
+  font-size: 1rem;
+  color: #d4a5ff;
+  font-weight: 600;
+  font-family: 'Kalam', cursive;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .watch-body {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .time-value {
+    font-size: 1.5rem;
+  }
+  
+  .time-label {
+    font-size: 0.6rem;
+  }
+  
+  .time-unit {
+    min-width: 45px;
+  }
+  
+  .countdown-title {
+    font-size: 1rem;
+  }
+  
+  .date-text {
+    font-size: 0.8rem;
+  }
+  
+  .quote {
+    font-size: 1rem;
+  }
+  
+  .hour-hand {
+    height: 60px;
+  }
+  
+  .minute-hand {
+    height: 85px;
+  }
+}
+
+@media (max-width: 480px) {
+  .watch-body {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .countdown-container {
+    padding: 1rem;
+    margin: 2rem auto;
+  }
+  
+  .time-value {
+    font-size: 1.2rem;
+  }
+  
+  .time-separator {
+    font-size: 1.4rem;
+  }
+  
+  .time-grid {
+    gap: 0.3rem;
+  }
+  
+  .countdown-title {
+    font-size: 0.9rem;
+  }
+  
+  .date-text {
+    font-size: 0.75rem;
+  }
+  
+  .quote {
+    font-size: 0.95rem;
+  }
+  
+  .author {
+    font-size: 0.85rem;
+  }
+  
+  .hour-hand {
+    height: 50px;
+  }
+  
+  .minute-hand {
+    height: 70px;
+  }
+}

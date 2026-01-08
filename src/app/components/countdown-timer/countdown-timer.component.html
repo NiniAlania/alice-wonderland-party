@@ -1,0 +1,85 @@
+<div class="countdown-container">
+  
+  <!-- Pocket Watch Design -->
+  <div class="pocket-watch">
+    <!-- Watch Chain -->
+    <div class="watch-chain"></div>
+    
+    <!-- Watch Body -->
+    <div class="watch-body">
+      <!-- Watch Crown (winding mechanism) -->
+      <div class="watch-crown"></div>
+      
+      <!-- Watch Face -->
+      <div class="watch-face">
+        <!-- Decorative elements -->
+        <div class="watch-decorations">
+          <div class="decoration top">♠</div>
+          <div class="decoration right">♥</div>
+          <div class="decoration bottom">♣</div>
+          <div class="decoration left">♦</div>
+        </div>
+        
+        @if (!timeRemaining().expired) {
+          <!-- Countdown Display -->
+          <div class="countdown-title">Time Until Wonderland</div>
+          
+          <div class="time-grid">
+            <div class="time-unit">
+              <div class="time-value">{{ timeRemaining().days }}</div>
+              <div class="time-label">Days</div>
+            </div>
+            
+            <div class="time-separator">:</div>
+            
+            <div class="time-unit">
+              <div class="time-value">{{ timeRemaining().hours.toString().padStart(2, '0') }}</div>
+              <div class="time-label">Hours</div>
+            </div>
+            
+            <div class="time-separator">:</div>
+            
+            <div class="time-unit">
+              <div class="time-value">{{ timeRemaining().minutes.toString().padStart(2, '0') }}</div>
+              <div class="time-label">Minutes</div>
+            </div>
+            
+            <div class="time-separator">:</div>
+            
+            <div class="time-unit">
+              <div class="time-value">{{ timeRemaining().seconds.toString().padStart(2, '0') }}</div>
+              <div class="time-label">Seconds</div>
+            </div>
+          </div>
+          
+          <!-- Party Date -->
+          <div class="party-date">
+            <div class="date-icon">🎩</div>
+            <div class="date-text">{{ getFormattedDate() }}</div>
+          </div>
+        } @else {
+          <!-- Party has started! -->
+          <div class="expired-message">
+            <div class="expired-icon">🎉</div>
+            <h2>The Party Has Begun!</h2>
+            <p>Welcome to Wonderland!</p>
+          </div>
+        }
+      </div>
+      
+      <!-- Watch Hands (decorative) -->
+      <div class="clock-hands">
+        <div class="hour-hand"></div>
+        <div class="minute-hand"></div>
+        <div class="center-dot"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Additional Text -->
+  <div class="countdown-message">
+    <p class="quote">"I'm late! I'm late! For a very important date!"</p>
+    <p class="author">— The White Rabbit</p>
+  </div>
+  
+</div>

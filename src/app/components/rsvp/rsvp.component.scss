@@ -1,0 +1,516 @@
+.rsvp-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.rsvp-title {
+  font-size: 3rem;
+  font-family: 'Fredericka the Great', 'Pacifico', cursive;
+  background: linear-gradient(135deg, #ffd700, #ff69b4, #da70d6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  transform: rotate(-1deg);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.rsvp-subtitle {
+  font-size: 1.4rem;
+  font-family: 'Satisfy', cursive;
+  color: #d4a5ff;
+  font-style: italic;
+  transform: rotate(1deg);
+}
+
+/* RSVP Form Card */
+.rsvp-form-card {
+  position: relative;
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 2px solid rgba(218, 165, 32, 0.4);
+  border-radius: 30px;
+  padding: 3rem 2.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(138, 43, 226, 0.3);
+  overflow: hidden;
+}
+
+/* Error Message */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 69, 69, 0.2);
+  border: 2px solid rgba(255, 69, 69, 0.6);
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #ff6b6b;
+  font-size: 1rem;
+  font-weight: 500;
+  animation: shake 0.5s ease-in-out;
+}
+
+.error-icon {
+  font-size: 1.5rem;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* Form */
+.rsvp-form {
+  position: relative;
+  z-index: 2;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-family: 'Kalam', cursive;
+  color: #ffd700;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.label-icon {
+  font-size: 1.3rem;
+}
+
+/* Input Fields */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Courgette', cursive;
+  transition: all 0.3s ease;
+  
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: rgba(255, 215, 0, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Radio Group */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 215, 0, 0.4);
+  }
+  
+  &.selected {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  }
+}
+
+.radio-custom {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 215, 0, 0.6);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+  
+  .selected & {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      background: #ffd700;
+      border-radius: 50%;
+      animation: pop 0.3s ease;
+    }
+  }
+}
+
+@keyframes pop {
+  0% { transform: translate(-50%, -50%) scale(0); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.radio-text {
+  font-size: 1.1rem;
+  font-family: 'Courgette', cursive;
+  color: #d4a5ff;
+}
+
+/* Slide-in Animation */
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Submit Button */
+.form-actions {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.submit-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  font-family: 'Satisfy', cursive;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #8b4789;
+  background: linear-gradient(to bottom, #fff9e6, #ffe4b3);
+  border: 3px solid #da70d6;
+  border-radius: 25px;
+  box-shadow: 
+    0 3px 0 #b85bb5,
+    0 5px 15px rgba(218, 112, 214, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  transform: rotate(-1deg);
+  overflow: visible;
+  
+  // Hand-drawn sketch effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px dashed rgba(255, 215, 0, 0.4);
+    border-radius: 25px;
+    pointer-events: none;
+  }
+  
+  &:hover {
+    transform: rotate(-1deg) translateY(-4px) scale(1.03);
+    box-shadow: 
+      0 5px 0 #b85bb5,
+      0 8px 20px rgba(218, 112, 214, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    background: linear-gradient(to bottom, #fffcf0, #ffeac4);
+    border-color: #ff69b4;
+    
+    .button-icon {
+      transform: scale(1.15) rotate(-5deg);
+    }
+    
+    .button-text {
+      color: #c62868;
+    }
+    
+    .button-arrow {
+      transform: translateX(5px);
+    }
+  }
+  
+  &:active {
+    transform: rotate(-1deg) translateY(-1px) scale(1.01);
+    box-shadow: 
+      0 2px 0 #b85bb5,
+      0 4px 10px rgba(218, 112, 214, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  
+  &:disabled,
+  &.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+    
+    &:hover {
+      transform: rotate(-1deg);
+      box-shadow: 
+        0 3px 0 #b85bb5,
+        0 5px 15px rgba(218, 112, 214, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+
+.button-icon,
+.button-text,
+.button-arrow {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.button-icon {
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 3px rgba(218, 112, 214, 0.3));
+  
+  &.spinner {
+    animation: spin 1s linear infinite;
+  }
+}
+
+.button-text {
+  transition: color 0.3s ease;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.button-arrow {
+  transition: transform 0.3s ease;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Form Decorations */
+.form-decorations {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.deco {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.2;
+  animation: floatDeco 4s ease-in-out infinite;
+}
+
+.deco-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.deco-2 { top: 15%; right: 10%; animation-delay: 1s; }
+.deco-3 { bottom: 15%; left: 15%; animation-delay: 2s; }
+.deco-4 { bottom: 10%; right: 15%; animation-delay: 3s; }
+
+@keyframes floatDeco {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% { 
+    transform: translateY(-15px) rotate(180deg);
+    opacity: 0.4;
+  }
+}
+
+/* Success Card */
+.success-card {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 2px solid rgba(138, 43, 226, 0.4);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(138, 43, 226, 0.3);
+}
+
+.success-icon {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  animation: celebrate 0.6s ease-in-out;
+}
+
+@keyframes celebrate {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.2) rotate(-10deg); }
+  75% { transform: scale(1.2) rotate(10deg); }
+}
+
+.success-title {
+  font-size: 2.5rem;
+  font-family: 'Fredericka the Great', cursive;
+  color: #ffd700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.success-message {
+  font-size: 1.3rem;
+  font-family: 'Courgette', cursive;
+  color: #d4a5ff;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.reset-button {
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  color: #ffd700;
+  font-size: 1rem;
+  font-family: 'Kalam', cursive;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateY(-2px);
+  }
+}
+
+/* Quote */
+.rsvp-quote {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1.5rem;
+}
+
+.quote-text {
+  font-size: 1.2rem;
+  font-family: 'Dancing Script', cursive;
+  color: #ffd700;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.quote-author {
+  font-size: 1rem;
+  font-family: 'Kalam', cursive;
+  color: #d4a5ff;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .rsvp-title {
+    font-size: 2.2rem;
+  }
+  
+  .rsvp-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .rsvp-form-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .submit-button {
+    padding: 1.1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .success-title {
+    font-size: 2rem;
+  }
+  
+  .success-message {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rsvp-container {
+    padding: 1rem;
+  }
+  
+  .rsvp-form-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .form-label {
+    font-size: 1rem;
+  }
+  
+  .form-input,
+  .form-textarea {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .radio-option {
+    padding: 1rem 1.2rem;
+  }
+  
+  .radio-text {
+    font-size: 1rem;
+  }
+  
+  .submit-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  .success-icon {
+    font-size: 4rem;
+  }
+}
