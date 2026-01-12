@@ -297,26 +297,240 @@
   }
 }
 
-/* Skip Button */
+/* === BUTTONS === */
 .skip-button {
   position: absolute;
-  bottom: 40px;
-  right: 40px;
-  padding: 12px 24px;
+  bottom: 30px;
+  right: 30px;
   background: rgba(255, 255, 255, 0.1);
+  color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
   border-radius: 25px;
-  color: #fff;
-  font-size: 1rem;
   cursor: pointer;
+  font-size: 0.95rem;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   z-index: 100;
   
   &:hover {
     background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateX(5px);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+  }
+}
+
+/* Follow the White Rabbit Button - Mysterious Design */
+.follow-rabbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  animation: fadeInSlow 1.5s ease-out;
+}
+
+.mystical-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: breathe 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.follow-rabbit-button {
+  position: relative;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  padding: 0;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  cursor: pointer;
+  box-shadow: 
+    0 0 30px rgba(138, 43, 226, 0.5),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      transparent,
+      rgba(138, 43, 226, 0.3),
+      transparent 30%
+    );
+    animation: rotate 4s linear infinite;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  &:hover {
+    transform: scale(1.1);
+    border-color: rgba(138, 43, 226, 0.6);
+    box-shadow: 
+      0 0 50px rgba(138, 43, 226, 0.8),
+      inset 0 0 30px rgba(138, 43, 226, 0.2);
+
+    .rabbit-image {
+      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+      transform: scale(1.1);
+    }
+
+    .button-text {
+      text-shadow: 0 0 15px rgba(138, 43, 226, 0.8);
+    }
+  }
+  
+  &:active {
+    transform: scale(1.05);
+  }
+
+  .rabbit-wrapper {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .rabbit-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+    transition: all 0.3s ease;
+    animation: gentleFloat 3s ease-in-out infinite;
+  }
+
+  .button-text {
+    position: relative;
+    z-index: 2;
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    text-transform: lowercase;
+    font-style: italic;
+    opacity: 0.8;
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+    transition: all 0.3s ease;
+  }
+}
+
+.floating-sparkles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 250px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+
+  .sparkle {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: sparkleFloat 4s ease-in-out infinite;
+
+    &:nth-child(1) {
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    &:nth-child(2) {
+      top: 10%;
+      right: 10%;
+      animation-delay: 1s;
+    }
+
+    &:nth-child(3) {
+      bottom: 10%;
+      left: 10%;
+      animation-delay: 2s;
+    }
+
+    &:nth-child(4) {
+      bottom: 10%;
+      right: 10%;
+      animation-delay: 3s;
+    }
+  }
+}
+
+@keyframes fadeInSlow {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes sparkleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.5);
   }
 }
 
@@ -447,6 +661,36 @@
     padding: 10px 20px;
     font-size: 0.9rem;
   }
+
+  /* Mobile adjustments for mysterious button */
+  .follow-rabbit-button {
+    width: 160px;
+    height: 160px;
+
+    .rabbit-image {
+      width: 70px;
+      height: 70px;
+    }
+
+    .button-text {
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+  }
+
+  .mystical-glow {
+    width: 250px;
+    height: 250px;
+  }
+
+  .floating-sparkles {
+    width: 220px;
+    height: 220px;
+
+    .sparkle {
+      font-size: 1rem;
+    }
+  }
   
   .content-wrapper {
     padding: 3rem 1.5rem 5rem;
@@ -493,6 +737,36 @@
   .alice-character {
     width: 150px;
   }
+
+  /* Small mobile adjustments for mysterious button */
+  .follow-rabbit-button {
+    width: 140px;
+    height: 140px;
+
+    .rabbit-image {
+      width: 60px;
+      height: 60px;
+    }
+
+    .button-text {
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+    }
+  }
+
+  .mystical-glow {
+    width: 200px;
+    height: 200px;
+  }
+
+  .floating-sparkles {
+    width: 180px;
+    height: 180px;
+
+    .sparkle {
+      font-size: 0.9rem;
+    }
+  }
   
   .content-wrapper {
     padding: 2rem 1rem 4rem;
@@ -511,5 +785,24 @@
     right: 15px;
     padding: 8px 16px;
     font-size: 0.85rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .follow-rabbit-button {
+    /* Remove hover-dependent animations on touch devices */
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 
+        0 0 40px rgba(138, 43, 226, 0.9),
+        inset 0 0 30px rgba(138, 43, 226, 0.3);
+    }
+  }
+
+  .skip-button {
+    &:active {
+      transform: scale(0.95);
+    }
   }
 }

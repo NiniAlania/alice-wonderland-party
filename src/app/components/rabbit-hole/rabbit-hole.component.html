@@ -48,6 +48,23 @@
       <h1 class="wonderland-title">Down the Rabbit Hole...</h1>
       <p class="subtitle">Follow Alice to Wonderland</p>
     </div>
+
+    <!-- Follow the White Rabbit Button -->
+    <div class="follow-rabbit-container" *ngIf="showFollowButton()">
+      <div class="mystical-glow"></div>
+      <button class="follow-rabbit-button" (click)="onFollowRabbit()">
+        <div class="rabbit-wrapper">
+          <img src="white-rabbit.png" alt="White Rabbit" class="rabbit-image" />
+        </div>
+        <span class="button-text">Follow...</span>
+      </button>
+      <div class="floating-sparkles">
+        <span class="sparkle">✨</span>
+        <span class="sparkle">✨</span>
+        <span class="sparkle">✨</span>
+        <span class="sparkle">✨</span>
+      </div>
+    </div>
     
     <!-- Skip Button -->
     <button class="skip-button" (click)="skipAnimation()">

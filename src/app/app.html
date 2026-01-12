@@ -1,4 +1,10 @@
 <!-- Animated Entrance -->
-<app-rabbit-hole></app-rabbit-hole>
+<app-rabbit-hole (followRabbit)="startMusicAndExperience()"></app-rabbit-hole>
+
+<!-- Music Toggle Button -->
+<button class="music-toggle" (click)="toggleMusic()" [attr.aria-label]="isMusicPlaying ? 'Pause music' : 'Play music'">
+  <span *ngIf="!isMusicPlaying">🎵</span>
+  <span *ngIf="isMusicPlaying">🔇</span>
+</button>
 
 <router-outlet />
