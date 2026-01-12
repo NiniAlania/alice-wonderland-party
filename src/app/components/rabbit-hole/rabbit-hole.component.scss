@@ -2,14 +2,21 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden; // Prevent scrolling during intro
   background: linear-gradient(180deg, #1a0033 0%, #2d1b4e 50%, #4a2c6b 100%);
+
+  // Enable scrolling when main content is visible
+  &:has(.main-content.visible) {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }
 
 /* === RABBIT HOLE ENTRANCE === */
 .rabbit-hole-entrance {
-  position: relative;
+  position: fixed; // Fix to viewport during intro
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -18,6 +25,8 @@
   justify-content: center;
   opacity: 1;
   transition: opacity 1s ease-out;
+  overflow: hidden;
+  z-index: 10;
   
   &.hide {
     opacity: 0;

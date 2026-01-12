@@ -20,6 +20,9 @@ export class RabbitHoleComponent implements OnInit {
   followRabbit = output<void>();
   
   ngOnInit() {
+    // Prevent body scroll during introduction
+    document.body.style.overflow = 'hidden';
+    
     // Start the entrance animation after a brief moment
     setTimeout(() => {
       this.isEntering.set(true);
@@ -38,6 +41,9 @@ export class RabbitHoleComponent implements OnInit {
   }
 
   onFollowRabbit() {
+    // Re-enable body scroll when entering main content
+    document.body.style.overflow = 'auto';
+    
     this.followRabbit.emit();
     this.showMainContent.set(true);
     this.showFollowButton.set(false);
